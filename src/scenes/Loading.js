@@ -4,6 +4,6 @@ class Loading extends Phaser.Scene {
     }
 
     create() {
-        this.time.delayedCall(100, () => { this.scene.start('menuScene'); }, null, this);
+        this.time.delayedCall(100, () => { this.scene.start('playScene'); }, null, this);
     }
 }

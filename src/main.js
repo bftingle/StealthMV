@@ -9,7 +9,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////
 
 let config = {
-    type: Phaser.CANVAS,
+    type: Phaser.WEBGL,
     width: 1400,
     height: 864,
     scene: [ Loading, Menu, Instructions, Credits, Play, Caught ],
