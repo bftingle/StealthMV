@@ -7,6 +7,7 @@ class Play extends Phaser.Scene {
         this.load.image('testBackground', './assets/testBackground.png');
         this.load.image('shade', './assets/shade.png');
         this.load.image('testLight', './assets/testLight.png');
+        this.load.image('guard', './assets/cop.png');
     }
     
     create() {
@@ -14,10 +15,12 @@ class Play extends Phaser.Scene {
 
         this.lightArray = [];
         
-        this.light1 = new Phaser.GameObjects.Image(this, 64, 64, 'testLight').setVisible(false);
-        this.lightArray.push(this.light1);
-        this.light2 = new Phaser.GameObjects.Image(this, 512, 512, 'testLight').setVisible(false);
-        this.lightArray.push(this.light2);
+        //this.light1 = new Phaser.GameObjects.Image(this, 64, 64, 'testLight').setVisible(false);
+        //this.lightArray.push(this.light1);
+        //this.light2 = new Phaser.GameObjects.Image(this, 512, 512, 'testLight').setVisible(false);
+        //this.lightArray.push(this.light2);
+
+        this.guard1 = new Guard(this, 700, 432, 'guard', 0, [['down', 648], ['right', 1050], ['up', 216], ['left', 350]]);
 
         this.lightRT = new Phaser.GameObjects.RenderTexture(this, 0, 0, 1400, 864).setVisible(false);
 
@@ -60,6 +63,8 @@ class Play extends Phaser.Scene {
         if(keyRIGHT.isDown) {
             this.light2.x += 2;
         }
+
+        this.guard1.update();
 
         this.lightRT.clear();
         this.lightRT.draw(this.lightArray);
