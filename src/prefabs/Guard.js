@@ -12,8 +12,6 @@ class Guard extends Phaser.GameObjects.Sprite {
     }
 
     update() {
-        //if(this.light.angle < 0) this.light.angle += 360;
-        //if(this.light.angle >= 360) this.light.angle -= 360;
         switch(this.path[this.pathIndex][0]) {
             case 'up':
                 if(this.light.angle != 0) {

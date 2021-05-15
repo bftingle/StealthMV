@@ -21,6 +21,7 @@ class Play extends Phaser.Scene {
         //this.lightArray.push(this.light2);
 
         this.guard1 = new Guard(this, 700, 432, 'guard', 0, [['down', 648], ['right', 1050], ['up', 216], ['left', 350]]);
+        this.guard2 = new Guard(this, 700, 432, 'guard', 0, [['up', 216], ['left', 350], ['down', 648], ['right', 1050]]);
 
         this.lightRT = new Phaser.GameObjects.RenderTexture(this, 0, 0, 1400, 864).setVisible(false);
 
@@ -65,6 +66,7 @@ class Play extends Phaser.Scene {
         }
 
         this.guard1.update();
+        this.guard2.update();
 
         this.lightRT.clear();
         this.lightRT.draw(this.lightArray);
