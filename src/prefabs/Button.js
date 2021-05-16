@@ -5,7 +5,7 @@ class Button extends Phaser.GameObjects.Sprite {
         scene.add.existing(this);
 
         let buttonStyle = {
-            fontFamily: 'Righteous',
+            fontFamily: 'Nova Square',
             fontSize: size,
             color: '#000000',
             align: 'right'
@@ -21,9 +21,9 @@ class Button extends Phaser.GameObjects.Sprite {
 
     push() {
         if(this.job == 'gotoPlay'){
-            if(this.scene.scene.isActive('menuScene')) this.scene.menuMusic.stop();
-            else if(this.scene.scene.isActive('gameOverScene')) this.scene.overMusic.stop();
-            this.scene.scene.start('playScene', {roadX: this.scene.road.tilePositionX}), this.menuclick1.play();
+            //if(this.scene.scene.isActive('menuScene')) this.scene.menuMusic.stop();
+            //else if(this.scene.scene.isActive('gameOverScene')) this.scene.overMusic.stop();
+            this.scene.scene.start('playScene'), this.menuclick1.play();
         }
 
         if(this.job == 'gotoInstructions'){
