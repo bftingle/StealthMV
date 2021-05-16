@@ -16,6 +16,9 @@ let config = {
     fps: {
         target: 60,
         forceSetTimeOut: true
+    },
+    physics: {
+        default: 'matter'
     }
 }
 

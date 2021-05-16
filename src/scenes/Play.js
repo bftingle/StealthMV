@@ -8,20 +8,30 @@ class Play extends Phaser.Scene {
         this.load.image('shade', './assets/shade.png');
         this.load.image('testLight', './assets/testLight.png');
         this.load.image('guard', './assets/cop.png');
+        this.load.image('wall', './assets/wall.png');
+        this.load.image('player', './assets/player.png');
     }
     
     create() {
         this.testBackground = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'testBackground').setOrigin(0, 0);
 
         this.lightArray = [];
+        this.wallArray = [];
         
-        //this.light1 = new Phaser.GameObjects.Image(this, 64, 64, 'testLight').setVisible(false);
-        //this.lightArray.push(this.light1);
-        //this.light2 = new Phaser.GameObjects.Image(this, 512, 512, 'testLight').setVisible(false);
-        //this.lightArray.push(this.light2);
+        this.guard1 = new Guard(this, 350, 216, 'guard', 0, [['down', 648], ['right', 1050], ['up', 216], ['left', 350]]);
+        this.guard2 = new Guard(this, 1050, 648, 'guard', 0, [['up', 216], ['left', 350], ['down', 648], ['right', 1050]]);
 
-        this.guard1 = new Guard(this, 700, 432, 'guard', 0, [['down', 648], ['right', 1050], ['up', 216], ['left', 350]]);
-        this.guard2 = new Guard(this, 700, 432, 'guard', 0, [['up', 216], ['left', 350], ['down', 648], ['right', 1050]]);
+        new Wall(this, 0, 0, 1400, 166, 'wall', 0);
+        new Wall(this, 0, 698, 1400, 864, 'wall', 0);
+        new Wall(this, 0, 0, 300, 382, 'wall', 0);
+        new Wall(this, 0, 482, 300, 864, 'wall', 0);
+        new Wall(this, 1100, 0, 1400, 382, 'wall', 0);
+        new Wall(this, 1100, 482, 1400, 864, 'wall', 0);
+        new Wall(this, 400, 266, 650, 598, 'wall', 0);
+        new Wall(this, 750, 266, 1000, 598, 'wall', 0);
+        new Wall(this, 400, 266, 1000, 382, 'wall', 0);
+
+        this.player = new Player(this, 700, 432, 'player', 0);
 
         this.lightRT = new Phaser.GameObjects.RenderTexture(this, 0, 0, 1400, 864).setVisible(false);
 
@@ -40,35 +50,12 @@ class Play extends Phaser.Scene {
     }
 
     update() {
-        if(keyW.isDown) {
-            this.light1.y -= 2;
-        }
-        if(keyA.isDown) {
-            this.light1.x -= 2;
-        }
-        if(keyS.isDown) {
-            this.light1.y += 2;
-        }
-        if(keyD.isDown) {
-            this.light1.x += 2;
-        }
-        if(keyUP.isDown) {
-            this.light2.y -= 2;
-        }
-        if(keyLEFT.isDown) {
-            this.light2.x -= 2;
-        }
-        if(keyDOWN.isDown) {
-            this.light2.y += 2;
-        }
-        if(keyRIGHT.isDown) {
-            this.light2.x += 2;
-        }
-
         this.guard1.update();
         this.guard2.update();
+        this.player.update();
 
         this.lightRT.clear();
         this.lightRT.draw(this.lightArray);
+        this.lightRT.erase(this.wallArray);
     }
 }
