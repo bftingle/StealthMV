@@ -10,9 +10,15 @@ class Play extends Phaser.Scene {
         this.load.image('guard', './assets/cop.png');
         this.load.image('wall', './assets/wall.png');
         this.load.image('player', './assets/player.png');
+        this.load.audio('footsteps', './assets/footsteps.wav');
+        this.load.audio('detected', './assets/detected.wav');
+        this.load.audio('play_music', './assets/Gameplay.wav');
     }
     
     create() {
+        this.playMusic = this.sound.add('play_music',{volume:0.25,loop:true});
+        this.playMusic.play();
+        
         this.testBackground = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'testBackground').setOrigin(0, 0);
 
         this.lightArray = [];
@@ -57,5 +63,20 @@ class Play extends Phaser.Scene {
         this.lightRT.clear();
         this.lightRT.draw(this.lightArray);
         this.lightRT.erase(this.wallArray);
+
+        if(this.checkCollision(this.testLight, this.player)) {
+            this.sound.play('detected');
+            //this.hole.isCollidable = false;
+            //this.playMusic.stop();
+            //this.scene.start('gameOverScene', {roadX: this.road.tilePositionX, score: this.score});
+        }
+    }
+
+    checkCollision(obj1, obj2) {
+        if(obj1.x < obj2.x + obj2.width && obj1.x + obj1.width > obj2.x && obj1.y < obj2.y + obj2.height && obj1.height + obj1.y > obj2.y) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
