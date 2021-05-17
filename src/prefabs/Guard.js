@@ -9,6 +9,10 @@ class Guard extends Phaser.GameObjects.Sprite {
 
         this.light = scene.add.image(x, y - 72, 'testLight').setVisible(false);
         scene.lightArray.push(this.light);
+        
+        this.run = scene.sound.add('footsteps',{volume:0.3});
+        this.range;
+        setInterval(() => {this.run.play()}, 500);
     }
 
     update() {
@@ -82,5 +86,9 @@ class Guard extends Phaser.GameObjects.Sprite {
                 this.light.x = this.x + 72;
                 break;
         }
+
+        this.range = Math.sqrt(Math.pow(this.x - this.scene.player.x, 2) + Math.pow(this.y - this.scene.player.y, 2));
+        if(this.range > 432) this.run.setVolume(0);
+        else this.run.setVolume((1 - (this.range / 432)) * 0.3);
     }
 }
