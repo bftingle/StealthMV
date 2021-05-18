@@ -23,7 +23,9 @@ class Button extends Phaser.GameObjects.Sprite {
         if(this.job == 'gotoPlay'){
             //if(this.scene.scene.isActive('menuScene')) this.scene.menuMusic.stop();
             //else if(this.scene.scene.isActive('gameOverScene')) this.scene.overMusic.stop();
-            this.scene.scene.start('playScene'), this.menuclick1.play();
+            this.scene.playMusic = this.scene.sound.add('play_music',{volume:0.25,loop:true});
+            this.scene.playMusic.play();
+            this.scene.scene.start('playScene', {roomX: 3, roomY: 3, playerX: 700, playerY: 432}), this.menuclick1.play();
         }
 
         if(this.job == 'gotoInstructions'){

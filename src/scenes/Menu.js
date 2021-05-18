@@ -7,6 +7,7 @@ class Menu extends Phaser.Scene {
         this.load.image('button', './assets/button2.png');
         this.load.audio('menuclick1', './assets/menuclick1.wav');
         this.load.audio('menuclick2', './assets/menuclick2.wav');
+        this.load.audio('play_music', './assets/Gameplay.wav');
     }
     
     create() {

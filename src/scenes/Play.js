@@ -12,32 +12,20 @@ class Play extends Phaser.Scene {
         this.load.image('player', './assets/player.png');
         this.load.audio('footsteps', './assets/footsteps.wav');
         this.load.audio('detected', './assets/detected.wav');
-        this.load.audio('play_music', './assets/Gameplay.wav');
     }
     
-    create() {
-        this.playMusic = this.sound.add('play_music',{volume:0.25,loop:true});
-        this.playMusic.play();
-        
+    create(data) {
         this.testBackground = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'testBackground').setOrigin(0, 0);
 
         this.lightArray = [];
         this.wallArray = [];
         
-        this.guard1 = new Guard(this, 350, 216, 'guard', 0, [['down', 648], ['right', 1050], ['up', 216], ['left', 350]]);
-        this.guard2 = new Guard(this, 1050, 648, 'guard', 0, [['up', 216], ['left', 350], ['down', 648], ['right', 1050]]);
+        this.roomX = data.roomX;
+        this.roomY = data.roomY;
+        this.map = new TowerMap();
+        this.map.array[this.roomY][this.roomX](this);
 
-        new Wall(this, 0, 0, 1400, 166, 'wall', 0);
-        new Wall(this, 0, 698, 1400, 864, 'wall', 0);
-        new Wall(this, 0, 0, 300, 382, 'wall', 0);
-        new Wall(this, 0, 482, 300, 864, 'wall', 0);
-        new Wall(this, 1100, 0, 1400, 382, 'wall', 0);
-        new Wall(this, 1100, 482, 1400, 864, 'wall', 0);
-        new Wall(this, 400, 266, 650, 598, 'wall', 0);
-        new Wall(this, 750, 266, 1000, 598, 'wall', 0);
-        new Wall(this, 400, 266, 1000, 382, 'wall', 0);
-
-        this.player = new Player(this, 700, 432, 'player', 0);
+        this.player = new Player(this, data.playerX, data.playerY, 'player', 0);
 
         this.lightRT = new Phaser.GameObjects.RenderTexture(this, 0, 0, 1400, 864).setVisible(false);
 
@@ -59,6 +47,11 @@ class Play extends Phaser.Scene {
         this.guard1.update();
         this.guard2.update();
         this.player.update();
+
+        if(this.player.y < 0) this.scene.restart({roomX: this.roomX, roomY: this.roomY - 1, playerX: 700, playerY: 840});
+        if(this.player.x < 0) this.scene.restart({roomX: this.roomX - 1, roomY: this.roomY, playerX: 1382, playerY: 432});
+        if(this.player.y > 864) this.scene.restart({roomX: this.roomX, roomY: this.roomY + 1, playerX: 700, playerY: 24});
+        if(this.player.x > 1400) this.scene.restart({roomX: this.roomX + 1, roomY: this.roomY, playerX: 18, playerY: 432});
 
         this.lightRT.clear();
         this.lightRT.draw(this.lightArray);
