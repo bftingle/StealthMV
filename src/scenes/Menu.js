@@ -11,7 +11,8 @@ class Menu extends Phaser.Scene {
     }
     
     create() {
-        new Button(this, 700, 432, 'button', 0, 'Play!', '36px', 'gotoPlay').setOrigin(0.5, 0.5).setInteractive({useHandCursor: true});
+        new Button(this, 600, 432, 'button', 0, 'Play!', '36px', 'gotoPlay').setOrigin(0.5, 0.5).setInteractive({useHandCursor: true});
+        new Button(this, 800, 432, 'button', 0, 'Dev Mode', '20px', 'gotoDevPlay').setOrigin(0.5, 0.5).setInteractive({useHandCursor: true});
 
         this.input.on('gameobjectup', (pointer, gameObject, event) => {
             gameObject.push();

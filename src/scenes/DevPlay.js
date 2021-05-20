@@ -1,11 +1,11 @@
-class Play extends Phaser.Scene {
+class DevPlay extends Phaser.Scene {
     constructor() {
-        super("playScene");
+        super("devPlayScene");
     }
 
     preload() {
         this.load.image('testBackground', './assets/testBackground.png');
-        this.load.image('shade', './assets/shade2.png');
+        this.load.image('shade', './assets/shade.png');
         this.load.image('testLight', './assets/testLight.png');
         this.load.image('guard', './assets/cop.png');
         this.load.image('wall', './assets/wall.png');
@@ -28,13 +28,9 @@ class Play extends Phaser.Scene {
 
         this.player = new Player(this, data.playerX, data.playerY, 'player', 0);
 
-        this.cameras.main.startFollow(this.player);
-        this.cameras.main.setZoom(4);
-
         this.lightRT = new Phaser.GameObjects.RenderTexture(this, 0, 0, 1400, 864).setVisible(false);
 
-        this.shade = this.add.image(700, 432, 'shade').setDisplaySize(this.cameras.main.displayWidth, this.cameras.main.displayHeight);
-        this.shade.setScrollFactor(0, 0);
+        this.shade = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'shade').setOrigin(0, 0);
         this.shade.mask = new Phaser.Display.Masks.BitmapMask(this, this.lightRT);
 		this.shade.mask.invertAlpha = true;
 
@@ -60,20 +56,5 @@ class Play extends Phaser.Scene {
         this.lightRT.clear();
         this.lightRT.draw(this.lightArray);
         this.lightRT.erase(this.wallArray);
-
-        // if(this.checkCollision(this.testLight, this.player)) {
-        //     this.sound.play('detected');
-        //     //this.hole.isCollidable = false;
-        //     //this.playMusic.stop();
-        //     //this.scene.start('gameOverScene', {roadX: this.road.tilePositionX, score: this.score});
-        // }
     }
-
-    // checkCollision(obj1, obj2) {
-    //     if(obj1.x < obj2.x + obj2.width && obj1.x + obj1.width > obj2.x && obj1.y < obj2.y + obj2.height && obj1.height + obj1.y > obj2.y) {
-    //         return true;
-    //     } else {
-    //         return false;
-    //     }
-    // }
 }

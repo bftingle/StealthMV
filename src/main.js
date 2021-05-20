@@ -12,7 +12,7 @@ let config = {
     type: Phaser.WEBGL,
     width: 1400,
     height: 864,
-    scene: [ Loading, Menu, Instructions, Credits, Play, Caught ],
+    scene: [ Loading, Menu, Instructions, Credits, Play, DevPlay, Caught ],
     fps: {
         target: 60,
         forceSetTimeOut: true
