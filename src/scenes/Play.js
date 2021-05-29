@@ -10,6 +10,7 @@ class Play extends Phaser.Scene {
         this.load.image('guard', './assets/cop.png');
         this.load.image('wall', './assets/wall.png');
         this.load.image('player', './assets/player.png');
+        this.load.image('lasers', './assets/lasers.png');
         this.load.audio('footsteps', './assets/footsteps.wav');
         this.load.audio('detected', './assets/detected.wav');
     }

@@ -8,8 +8,7 @@ class Guard extends Phaser.GameObjects.Sprite {
         this.path = path;
         this.pathIndex = 0;
 
-        this.light = scene.add.image(x, y - 18, 'testLight').setVisible(false).setDisplaySize(30, 30);
-        scene.lightArray.push(this.light);
+        this.light = new Light(scene, x, y - 18, 'testLight', 0);
         
         this.run = scene.sound.add('footsteps',{volume:0.3});
         this.range;
