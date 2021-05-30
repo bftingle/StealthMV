@@ -21,6 +21,7 @@ class Play extends Phaser.Scene {
         this.lightArray = [];
         this.wallArray = [];
         this.guardArray = [];
+        this.intervalArray = [];
         
         this.roomX = data.roomX;
         this.roomY = data.roomY;
@@ -39,6 +40,9 @@ class Play extends Phaser.Scene {
         this.shade.mask = new Phaser.Display.Masks.BitmapMask(this, this.lightRT);
 		this.shade.mask.invertAlpha = true;
 
+        this.gameOver = false;
+        this.detection = 0;
+
         keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
         keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
@@ -50,17 +54,40 @@ class Play extends Phaser.Scene {
     }
 
     update() {
-        this.guardArray.forEach(guard => guard.update());
-        this.player.update();
+        if(!this.gameOver) {
+            this.guardArray.forEach(guard => guard.update());
+            this.player.update();
+        }
 
-        if(this.player.y < 0) this.scene.restart({roomX: this.roomX, roomY: this.roomY - 1, playerX: 700, playerY: 840});
-        if(this.player.x < 0) this.scene.restart({roomX: this.roomX - 1, roomY: this.roomY, playerX: 1382, playerY: 432});
-        if(this.player.y > 864) this.scene.restart({roomX: this.roomX, roomY: this.roomY + 1, playerX: 700, playerY: 24});
-        if(this.player.x > 1400) this.scene.restart({roomX: this.roomX + 1, roomY: this.roomY, playerX: 18, playerY: 432});
+        if(this.player.y < 0) {
+            this.intervalArray.forEach(interval => clearInterval(interval));
+            this.scene.restart({roomX: this.roomX, roomY: this.roomY - 1, playerX: 700, playerY: 840});
+        }
+        if(this.player.x < 0) {
+            this.intervalArray.forEach(interval => clearInterval(interval));
+            this.scene.restart({roomX: this.roomX - 1, roomY: this.roomY, playerX: 1382, playerY: 432});
+        }
+        if(this.player.y > 864) {
+            this.intervalArray.forEach(interval => clearInterval(interval));
+            this.scene.restart({roomX: this.roomX, roomY: this.roomY + 1, playerX: 700, playerY: 24});
+        }
+        if(this.player.x > 1400) {
+            this.intervalArray.forEach(interval => clearInterval(interval));
+            this.scene.restart({roomX: this.roomX + 1, roomY: this.roomY, playerX: 18, playerY: 432});
+        }
 
         this.lightRT.clear();
         this.lightRT.draw(this.lightArray);
         this.lightRT.erase(this.wallArray);
+
+        if(this.matter.overlap(this.player, this.lightArray)) {
+            this.detection++;
+            if(this.detection >= 15 && !this.gameOver) {
+                this.gameOver = true;
+                this.sound.play('detected');
+                this.time.delayedCall(2000, () => {this.intervalArray.forEach(interval => clearInterval(interval)), this.scene.start('Caught');}, null, this);
+            }
+        }
 
         // if(this.checkCollision(this.testLight, this.player)) {
         //     this.sound.play('detected');

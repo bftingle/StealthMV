@@ -12,7 +12,7 @@ class Guard extends Phaser.GameObjects.Sprite {
         
         this.run = scene.sound.add('footsteps',{volume:0.3});
         this.range;
-        setInterval(() => {this.run.play()}, 500);
+        scene.intervalArray.push(setInterval(() => {this.run.play()}, 500));
     }
 
     update() {

@@ -11,7 +11,7 @@ class Lasers extends Phaser.Physics.Matter.Sprite {
         this.off = false;
         this.baseX = x;
         this.baseY = y;
-        setInterval(() => {this.toggle()}, 2000);
+        scene.intervalArray.push(setInterval(() => {this.toggle()}, 1500));
     }
 
     toggle() {
