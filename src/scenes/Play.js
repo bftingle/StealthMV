@@ -10,6 +10,27 @@ class Play extends Phaser.Scene {
         this.load.image('guard', './assets/cop.png');
         this.load.image('wall', './assets/wall.png');
         this.load.image('player', './assets/player.png');
+
+        this.load.image('border1', './assets/border.png');
+        this.load.image('border2', './assets/border2.png');
+        this.load.image('border3', './assets/border3.png');
+        this.load.image('border4', './assets/border4.png');
+        this.load.image('border_vert', './assets/border_vert.png');
+        this.load.image('border_vert2', './assets/border_vert2.png');
+        this.load.image('camera', './assets/camera.png');
+        this.load.image('stone1', './assets/stone1.png');
+        this.load.image('stone2', './assets/stone2.png');
+        this.load.image('greencard', './assets/greencard.png');
+        this.load.image('redcard', './assets/redcard.png');
+        this.load.image('bluecard', './assets/bluecard.png');
+        this.load.image('wall1', './assets/wall1.png');
+        this.load.image('wall2', './assets/wall2.png');
+        this.load.image('wall_panel', './assets/wall_panel.png');
+        this.load.image('wall_panel2', './assets/wall_panel2.png');
+        this.load.image('wall_panel3', './assets/wall_panel3.png');
+        this.load.image('wall_panel4', './assets/wall_panel4.png');
+        this.load.image('wall_panel5', './assets/wall_panel5.png');
+      
         this.load.audio('footsteps', './assets/footsteps.wav');
         this.load.audio('detected', './assets/detected.wav');
     }
