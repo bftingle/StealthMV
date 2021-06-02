@@ -43,6 +43,7 @@ class Play extends Phaser.Scene {
         this.wallArray = [];
         this.guardArray = [];
         this.intervalArray = [];
+        this.pickup = null;
         
         this.roomX = data.roomX;
         this.roomY = data.roomY;
@@ -92,6 +93,7 @@ class Play extends Phaser.Scene {
         if(!this.gameOver) {
             this.guardArray.forEach(guard => guard.update());
             this.player.update();
+            if(this.pickup != null) this.pickup.update();
         }
 
         if(this.player.y < 0) {

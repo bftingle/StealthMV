@@ -147,5 +147,7 @@ class TowerMap {
 
         new Lasers(scene, 590, 432, 'lasers', 0);
         new Lasers(scene, 808, 432, 'lasers', 0);
+
+        new Keycard(scene, 700, 462, 'greencard', 0, 'greenCard');
     }
 }
