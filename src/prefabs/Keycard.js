@@ -12,13 +12,13 @@ class Keycard extends Phaser.Physics.Matter.Sprite {
     update() {
         if(this.scene.matter.overlap(this.scene.player, this)) {
             switch(this.id) {
-                case 'greenCard':
+                case 'green':
                     this.scene.game.greenCard = true;
                     break;
-                case 'blueCard':
+                case 'blue':
                     this.scene.game.blueCard = true;
                     break;
-                case 'redCard':
+                case 'red':
                     this.scene.game.redCard = true;
                     break;
             }
