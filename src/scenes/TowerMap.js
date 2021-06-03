@@ -47,10 +47,10 @@ class TowerMap {
         scene.wallArray.push(new Wall(scene, 932, 189, 1120, 288, 'wall_panel3', 0));
         scene.wallArray.push(new Wall(scene, 1150, 189, 1340, 288, 'wall_panel5', 0));
 
-        scene.wallArray.push(new Wall(scene, 60, 318, 248, 417, 'wall_panel5', 0));    //3rd Row
+        scene.wallArray.push(new Wall(scene, 60, 318, 248, 417, 'wall_panel6', 0));    //3rd Row
         scene.wallArray.push(new Wall(scene, 278, 318, 466, 417, 'wall_panel4', 0));
         scene.wallArray.push(new Wall(scene, 496, 318, 684, 417, 'wall_panel3', 0));
-        scene.wallArray.push(new Wall(scene, 714, 318, 902, 417, 'wall_panel5', 0));
+        scene.wallArray.push(new Wall(scene, 714, 318, 902, 417, 'wall_panel6', 0));
         scene.wallArray.push(new Wall(scene, 932, 318, 1120, 417, 'wall_panel', 0));
         scene.wallArray.push(new Wall(scene, 1150, 318, 1340, 417, 'wall_panel5', 0));
 
@@ -64,7 +64,7 @@ class TowerMap {
         scene.wallArray.push(new Wall(scene, 60, 576, 248, 675, 'wall_panel4', 0));    //5th Row
         scene.wallArray.push(new Wall(scene, 278, 576, 466, 675, 'wall_panel5', 0));
         scene.wallArray.push(new Wall(scene, 496, 576, 684, 675, 'wall_panel3', 0));
-        scene.wallArray.push(new Wall(scene, 714, 576, 902, 675, 'wall_panel5', 0));
+        scene.wallArray.push(new Wall(scene, 714, 576, 902, 675, 'wall_panel6', 0));
         scene.wallArray.push(new Wall(scene, 932, 576, 1120, 675, 'wall_panel', 0));
         scene.wallArray.push(new Wall(scene, 1150, 576, 1340, 675, 'wall_panel4', 0));
 
@@ -88,7 +88,7 @@ class TowerMap {
         scene.wallArray.push(new Wall(scene, 970, 0, 1400, 30, 'border3', 0));
 
         scene.wallArray.push(new Wall(scene, 0, 834, 430, 864, 'border2', 0));    
-        scene.wallArray.push(new Wall(scene, 470, 834, 900, 864, 'border2', 0));
+        scene.wallArray.push(new Wall(scene, 430, 834, 860, 864, 'border2', 0));
         scene.wallArray.push(new Wall(scene, 970, 834, 1400, 864, 'border2', 0));
 
         scene.wallArray.push(new Wall(scene, 0, 0, 30, 420, 'border_vert', 0));    
