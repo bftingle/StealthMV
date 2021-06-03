@@ -8,5 +8,6 @@ class Light extends Phaser.Physics.Matter.Sprite {
 
         scene.add.existing(this);
         scene.lightArray.push(this);
+        scene.catchArray.push(this);
     }
 }

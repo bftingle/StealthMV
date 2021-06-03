@@ -7,6 +7,7 @@ class Lasers extends Phaser.Physics.Matter.Sprite {
 
         scene.add.existing(this);
         scene.lightArray.push(this);
+        scene.catchArray.push(this);
 
         this.off = false;
         this.baseX = x;
