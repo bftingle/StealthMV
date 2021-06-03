@@ -4,9 +4,10 @@ class Keycard extends Phaser.Physics.Matter.Sprite {
         this.id = id;
         this.setDisplaySize(36, 36);
         this.setStatic(true);
+        this.setCollidesWith(0);
 
         scene.add.existing(this);
-        scene.pickup = this;
+        scene.pickupArray.push(this);
     }
 
     update() {
@@ -22,8 +23,7 @@ class Keycard extends Phaser.Physics.Matter.Sprite {
                     this.scene.game.redCard = true;
                     break;
             }
-            this.scene.pickup = null;
-            this.destroy();
+            this.setPosition(-969, -969);
         }
     }
 }

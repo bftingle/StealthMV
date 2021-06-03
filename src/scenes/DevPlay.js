@@ -10,6 +10,9 @@ class DevPlay extends Phaser.Scene {
         this.load.image('guard', './assets/cop.png');
         this.load.image('wall', './assets/wall.png');
         this.load.image('player', './assets/player.png');
+        this.load.image('lasers', './assets/lasers.png');
+        this.load.audio('footsteps', './assets/footsteps.wav');
+        this.load.audio('detected', './assets/detected.wav');
 
         this.load.image('border1', './assets/border.png');
         this.load.image('border2', './assets/border2.png');
@@ -30,18 +33,18 @@ class DevPlay extends Phaser.Scene {
         this.load.image('wall_panel3', './assets/wall_panel3.png');
         this.load.image('wall_panel4', './assets/wall_panel4.png');
         this.load.image('wall_panel5', './assets/wall_panel5.png');
-
-
-        this.load.audio('footsteps', './assets/footsteps.wav');
-        this.load.audio('detected', './assets/detected.wav');
+		this.load.image('inventory', './assets/inventory.png');
     }
     
     create(data) {
         this.testBackground = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'testBackground').setOrigin(0, 0);
 
         this.lightArray = [];
+        this.catchArray = [];
         this.wallArray = [];
         this.guardArray = [];
+        this.intervalArray = [];
+        this.pickupArray = [];
         
         this.roomX = data.roomX;
         this.roomY = data.roomY;
@@ -56,6 +59,20 @@ class DevPlay extends Phaser.Scene {
         this.shade.mask = new Phaser.Display.Masks.BitmapMask(this, this.lightRT);
 		this.shade.mask.invertAlpha = true;
 
+        this.inventory = this.add.image(700, 432, 'inventory').setVisible(false).setScrollFactor(0, 0);
+        this.greenCard = this.add.image(648, 396, 'greencard').setVisible(false).setScrollFactor(0, 0).setDisplaySize(36, 36);
+        this.blueCard = this.add.image(680, 396, 'bluecard').setVisible(false).setScrollFactor(0, 0).setDisplaySize(36, 36);
+        this.redCard = this.add.image(712, 396, 'redcard').setVisible(false).setScrollFactor(0, 0).setDisplaySize(36, 36);
+        this.stone1_3 = this.add.image(744, 396, 'stone1').setVisible(false).setScrollFactor(0, 0).setDisplaySize(24, 24);
+        this.stone1_4 = this.add.image(648, 432, 'stone2').setVisible(false).setScrollFactor(0, 0).setDisplaySize(30, 30);
+        this.stone1_5 = this.add.image(680, 432, 'stone1').setVisible(false).setScrollFactor(0, 0).setDisplaySize(24, 24);
+        this.stone2_3 = this.add.image(712, 432, 'stone2').setVisible(false).setScrollFactor(0, 0).setDisplaySize(30, 30);
+        this.stone3_2 = this.add.image(744, 432, 'stone1').setVisible(false).setScrollFactor(0, 0).setDisplaySize(24, 24);
+        this.stone3_4 = this.add.image(648, 468, 'stone2').setVisible(false).setScrollFactor(0, 0).setDisplaySize(30, 30);
+        this.stone4_3 = this.add.image(680, 468, 'stone1').setVisible(false).setScrollFactor(0, 0).setDisplaySize(24, 24);
+        this.stone4_5 = this.add.image(712, 468, 'stone2').setVisible(false).setScrollFactor(0, 0).setDisplaySize(30, 30);
+        this.stone5_2 = this.add.image(744, 468, 'stone1').setVisible(false).setScrollFactor(0, 0).setDisplaySize(24, 24);
+
         keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
         keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
@@ -64,11 +81,13 @@ class DevPlay extends Phaser.Scene {
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
         keyDOWN = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
         keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
+        keyTAB = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.TAB);
     }
 
     update() {
         this.guardArray.forEach(guard => guard.update());
         this.player.update();
+        this.pickupArray.forEach(pickup => pickup.update());
 
         if(this.player.y < 0) this.scene.restart({roomX: this.roomX, roomY: this.roomY - 1, playerX: 700, playerY: 840});
         if(this.player.x < 0) this.scene.restart({roomX: this.roomX - 1, roomY: this.roomY, playerX: 1382, playerY: 432});
@@ -78,5 +97,36 @@ class DevPlay extends Phaser.Scene {
         this.lightRT.clear();
         this.lightRT.draw(this.lightArray);
         this.lightRT.erase(this.wallArray);
+
+        if(Phaser.Input.Keyboard.JustDown(keyTAB)) {
+            this.inventory.setVisible(true);
+            if(this.game.greenCard) this.greenCard.setVisible(true);
+            if(this.game.blueCard) this.blueCard.setVisible(true);
+            if(this.game.redCard) this.redCard.setVisible(true);
+            if(this.game.stone1_3) this.stone1_3.setVisible(true);
+            if(this.game.stone1_4) this.stone1_4.setVisible(true);
+            if(this.game.stone1_5) this.stone1_5.setVisible(true);
+            if(this.game.stone2_3) this.stone2_3.setVisible(true);
+            if(this.game.stone3_2) this.stone3_2.setVisible(true);
+            if(this.game.stone3_4) this.stone3_4.setVisible(true);
+            if(this.game.stone4_3) this.stone4_3.setVisible(true);
+            if(this.game.stone4_5) this.stone4_5.setVisible(true);
+            if(this.game.stone5_2) this.stone5_2.setVisible(true);
+        }
+        if(Phaser.Input.Keyboard.JustUp(keyTAB)) {
+            this.inventory.setVisible(false);
+            this.greenCard.setVisible(false);
+            this.blueCard.setVisible(false);
+            this.redCard.setVisible(false);
+            this.stone1_3.setVisible(false);
+            this.stone1_4.setVisible(false);
+            this.stone1_5.setVisible(false);
+            this.stone2_3.setVisible(false);
+            this.stone3_2.setVisible(false);
+            this.stone3_4.setVisible(false);
+            this.stone4_3.setVisible(false);
+            this.stone4_5.setVisible(false);
+            this.stone5_2.setVisible(false);
+        }
     }
 }

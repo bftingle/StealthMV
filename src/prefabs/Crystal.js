@@ -2,11 +2,13 @@ class Crystal extends Phaser.Physics.Matter.Sprite {
     constructor(scene, x, y, texture, frame, id) {
         super(scene.matter.world, x, y, texture, frame);
         this.id = id;
-        this.setDisplaySize(36, 36);
+        if(texture == 'stone1') this.setDisplaySize(24, 24);
+        else this.setDisplaySize(30, 30);
         this.setStatic(true);
+        this.setCollidesWith(0);
 
         scene.add.existing(this);
-        scene.pickup = this;
+        scene.pickupArray.push(this);
         scene.lightArray.push(this);
     }
 
@@ -41,8 +43,7 @@ class Crystal extends Phaser.Physics.Matter.Sprite {
                     this.scene.game.stone5_2 = true;
                     break;
             }
-            this.scene.pickup = null;
-            this.destroy();
+            this.setPosition(-939, -939);
         }
     }
 }

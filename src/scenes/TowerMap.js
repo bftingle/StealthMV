@@ -1,37 +1,23 @@
 class TowerMap {
     constructor() {
         this.array = [
-            [this.default, this.default, this.default, this.default, this.default, this.default, this.default],
-            [this.default, this.default, this.default, this.default, this.default, this.default, this.default],
-            [this.default, this.default, this.default, this.default, this.default, this.default, this.default],
-            [this.default, this.default, this.default, this.start  , this.default, this.default, this.default],
-            [this.default, this.default, this.default, this.default, this.default, this.default, this.default],
-            [this.default, this.default, this.default, this.default, this.default, this.default, this.default],
-            [this.default, this.default, this.default, this.default, this.default, this.default, this.default]
+            [this.default, this.default, this.default, this.default, this.default],
+            [this.default, this.default, this.default, this.default, this.default],
+            [this.default, this.default, this.start  , this.default, this.default],
+            [this.default, this.default, this.default, this.default, this.default],
+            [this.default, this.default, this.default, this.default, this.default]
         ]
     }
 
     default(scene) {
-        scene.wallArray.push(new Wall(scene, 0, 0, 430, 30, 'border3', 0));    //Outer Walls
-        scene.wallArray.push(new Wall(scene, 430, 0, 860, 30, 'border3', 0));
-        scene.wallArray.push(new Wall(scene, 970, 0, 1400, 30, 'border3', 0));
-
-        scene.wallArray.push(new Wall(scene, 0, 834, 430, 864, 'border2', 0));    
-        scene.wallArray.push(new Wall(scene, 470, 834, 900, 864, 'border2', 0));
-        scene.wallArray.push(new Wall(scene, 970, 834, 1400, 864, 'border2', 0));
-
-        scene.wallArray.push(new Wall(scene, 0, 0, 30, 420, 'border_vert', 0));    
-        scene.wallArray.push(new Wall(scene, 0, 444, 30, 864, 'border_vert', 0));
-        
-        scene.wallArray.push(new Wall(scene, 1370, 0, 1400, 420, 'border_vert', 0));    
-        scene.wallArray.push(new Wall(scene, 1370, 444, 1400, 864, 'border_vert', 0));
-
-        // scene.wallArray.push(new Wall(scene, 0, 0, 30, 417, 'wall', 0));
-        // scene.wallArray.push(new Wall(scene, 0, 447, 30, 864, 'wall', 0));
-        // scene.wallArray.push(new Wall(scene, 0, 834, 685, 864, 'wall', 0));
-        // scene.wallArray.push(new Wall(scene, 715, 834, 1400, 864, 'wall', 0));
-        // scene.wallArray.push(new Wall(scene, 1370, 0, 1400, 417, 'wall', 0));
-        // scene.wallArray.push(new Wall(scene, 1370, 447, 1400, 864, 'wall', 0));
+        scene.wallArray.push(new Wall(scene, 0, 0, 685, 30, 'border3', 0));    //Outer Walls
+        scene.wallArray.push(new Wall(scene, 715, 0, 1400, 30, 'border3', 0));
+        scene.wallArray.push(new Wall(scene, 0, 0, 30, 417, 'border_vert', 0));
+        scene.wallArray.push(new Wall(scene, 0, 447, 30, 864, 'border_vert', 0));
+        scene.wallArray.push(new Wall(scene, 0, 834, 685, 864, 'border2', 0));
+        scene.wallArray.push(new Wall(scene, 715, 834, 1400, 864, 'border2', 0));
+        scene.wallArray.push(new Wall(scene, 1370, 0, 1400, 417, 'border_vert', 0));
+        scene.wallArray.push(new Wall(scene, 1370, 447, 1400, 864, 'border_vert', 0));
 
         scene.wallArray.push(new Wall(scene, 60, 60, 230, 165, 'wall_panel', 0));    //1st Row
         scene.wallArray.push(new Wall(scene, 278, 60, 466, 159, 'wall_panel3', 0));
@@ -83,19 +69,14 @@ class TowerMap {
     }
 
     start(scene) {
-        scene.wallArray.push(new Wall(scene, 0, 0, 430, 30, 'border3', 0));    //Outer Walls
-        scene.wallArray.push(new Wall(scene, 430, 0, 860, 30, 'border3', 0));
-        scene.wallArray.push(new Wall(scene, 970, 0, 1400, 30, 'border3', 0));
-
-        scene.wallArray.push(new Wall(scene, 0, 834, 430, 864, 'border2', 0));    
-        scene.wallArray.push(new Wall(scene, 470, 834, 900, 864, 'border2', 0));
-        scene.wallArray.push(new Wall(scene, 970, 834, 1400, 864, 'border2', 0));
-
-        scene.wallArray.push(new Wall(scene, 0, 0, 30, 420, 'border_vert', 0));    
-        scene.wallArray.push(new Wall(scene, 0, 444, 30, 864, 'border_vert', 0));
-        
-        scene.wallArray.push(new Wall(scene, 1370, 0, 1400, 420, 'border_vert', 0));    
-        scene.wallArray.push(new Wall(scene, 1370, 444, 1400, 864, 'border_vert', 0));
+        scene.wallArray.push(new Wall(scene, 0, 0, 685, 30, 'border3', 0));    //Outer Walls
+        scene.wallArray.push(new Wall(scene, 715, 0, 1400, 30, 'border3', 0));
+        scene.wallArray.push(new Wall(scene, 0, 0, 30, 417, 'border_vert', 0));
+        scene.wallArray.push(new Wall(scene, 0, 447, 30, 864, 'border_vert', 0));
+        scene.wallArray.push(new Wall(scene, 0, 834, 685, 864, 'border2', 0));
+        scene.wallArray.push(new Wall(scene, 715, 834, 1400, 864, 'border2', 0));
+        scene.wallArray.push(new Wall(scene, 1370, 0, 1400, 417, 'border_vert', 0));
+        scene.wallArray.push(new Wall(scene, 1370, 447, 1400, 864, 'border_vert', 0));
 
         scene.wallArray.push(new Wall(scene, 60, 60, 230, 165, 'wall_panel', 0));    //1st Row
         scene.wallArray.push(new Wall(scene, 278, 60, 466, 159, 'wall_panel3', 0));
@@ -148,6 +129,8 @@ class TowerMap {
         new Lasers(scene, 590, 432, 'lasers', 0);
         new Lasers(scene, 808, 432, 'lasers', 0);
 
-        new Keycard(scene, 700, 462, 'greencard', 0, 'green');
+        new Keycard(scene, 700, 472, 'greencard', 0, 'green');
+        new Crystal(scene, 700, 512, 'stone1', 0, '1_3');
+        new Crystal(scene, 700, 552, 'stone2', 0, '1_4');
     }
 }

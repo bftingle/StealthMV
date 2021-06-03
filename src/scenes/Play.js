@@ -40,10 +40,11 @@ class Play extends Phaser.Scene {
         this.testBackground = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'testBackground').setOrigin(0, 0);
 
         this.lightArray = [];
+        this.catchArray = [];
         this.wallArray = [];
         this.guardArray = [];
         this.intervalArray = [];
-        this.pickup = null;
+        this.pickupArray = [];
         
         this.roomX = data.roomX;
         this.roomY = data.roomY;
@@ -93,7 +94,7 @@ class Play extends Phaser.Scene {
         if(!this.gameOver) {
             this.guardArray.forEach(guard => guard.update());
             this.player.update();
-            if(this.pickup != null) this.pickup.update();
+            this.pickupArray.forEach(pickup => pickup.update());
         }
 
         if(this.player.y < 0) {
@@ -117,7 +118,7 @@ class Play extends Phaser.Scene {
         this.lightRT.draw(this.lightArray);
         this.lightRT.erase(this.wallArray);
 
-        if(this.matter.overlap(this.player, this.lightArray)) {
+        if(this.matter.overlap(this.player, this.catchArray)) {
             this.detection++;
             if(this.detection >= 15 && !this.gameOver) {
                 this.gameOver = true;
