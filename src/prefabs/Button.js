@@ -38,12 +38,12 @@ class Button extends Phaser.GameObjects.Sprite {
 
         if(this.job == 'gotoInstructions'){
             this.scene.scene.start('instructionsScene'), this.menuclick2.play();
-            this.scene.menuMusic.stop();
+            //this.scene.menuMusic.stop();
         }
 
         if(this.job == 'gotoCredits'){
             this.scene.scene.start('creditsScene'), this.menuclick2.play();
-            this.scene.menuMusic.stop();
+            //this.scene.menuMusic.stop();
         }
 
         if(this.job == 'gotoMenu'){ 
