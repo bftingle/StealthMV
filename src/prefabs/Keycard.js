@@ -8,10 +8,12 @@ class Keycard extends Phaser.Physics.Matter.Sprite {
 
         scene.add.existing(this);
         scene.pickupArray.push(this);
+        this.pickup = scene.sound.add('pickup');
     }
 
     update() {
         if(this.scene.matter.overlap(this.scene.player, this)) {
+            this.pickup.play();
             switch(this.id) {
                 case 'green':
                     this.scene.game.greenCard = true;

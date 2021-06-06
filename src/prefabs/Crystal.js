@@ -10,10 +10,12 @@ class Crystal extends Phaser.Physics.Matter.Sprite {
         scene.add.existing(this);
         scene.pickupArray.push(this);
         scene.lightArray.push(this);
+        this.pickup = scene.sound.add('pickup');
     }
 
     update() {
         if(this.scene.matter.overlap(this.scene.player, this)) {
+            this.pickup.play();
             switch(this.id) {
                 case '1_3':
                     this.scene.game.stone1_3 = true;

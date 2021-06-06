@@ -13,6 +13,7 @@ class Play extends Phaser.Scene {
         this.load.image('lasers', './assets/lasers.png');
         this.load.audio('footsteps', './assets/footsteps.wav');
         this.load.audio('detected', './assets/detected.wav');
+        this.load.audio('pickup', './assets/pickup.wav');
 
         this.load.image('border1', './assets/border.png');
         this.load.image('border2', './assets/border2.png');
