@@ -127,7 +127,7 @@ class Play extends Phaser.Scene {
                 this.gameOver = true;
                 this.sound.play('detected');
                 this.intervalArray.forEach(interval => clearInterval(interval));
-                this.time.delayedCall(2000, () => {this.scene.start('Caught');}, null, this);
+                this.time.delayedCall(2000, () => {this.scene.start('caughtScene');}, null, this);
             }
         }
 
