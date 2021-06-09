@@ -28,6 +28,8 @@ class DevPlay extends Phaser.Scene {
         this.load.image('redcard', './assets/redcard.png');
         this.load.image('bluecard', './assets/bluecard.png');
         this.load.image('wall1', './assets/wall1.png');
+        this.load.image('wall1_vert', './assets/wall1_vert.png');
+        this.load.image('wall2_vert', './assets/wall2_vert.png');
         this.load.image('wall2', './assets/wall2.png');
         this.load.image('wall_panel', './assets/wall_panel.png');
         this.load.image('wall_panel2', './assets/wall_panel2.png');
