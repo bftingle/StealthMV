@@ -49,5 +49,9 @@ class Button extends Phaser.GameObjects.Sprite {
         if(this.job == 'gotoMenu'){ 
             this.scene.scene.start('menuScene'), this.menuclick1.play();
         }
+
+        if(this.job == 'gotoCaught'){ 
+            this.scene.scene.start('caughtScene'), this.menuclick1.play();
+        }
     }
 }
