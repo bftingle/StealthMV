@@ -15,6 +15,16 @@ class Play extends Phaser.Scene {
         this.load.audio('detected', './assets/detected.wav');
         this.load.audio('pickup', './assets/pickup.wav');
 
+        this.load.spritesheet('playerwalk_up', './assets/walk_up.png', {frameWidth: 90, frameheight: 50, startFrame: 0, endFrame: 16});
+        this.load.spritesheet('playerwalk_down', './assets/walk_down.png', {frameWidth: 90, frameheight: 145, startFrame: 0, endFrame: 17});
+        this.load.spritesheet('playerwalk_left', './assets/walk_left.png', {frameWidth: 90, frameheight: 145, startFrame: 0, endFrame: 12});
+        this.load.spritesheet('playerwalk_right', './assets/walk_right.png', {frameWidth: 90, frameheight: 145, startFrame: 0, endFrame: 12});
+
+        this.load.spritesheet('copwalk_up', './assets/cop_walk_up.png', {frameWidth: 90, frameheight: 145, startFrame: 0, endFrame: 16});
+        this.load.spritesheet('copwalk_down', './assets/cop_walk_down.png', {frameWidth: 90, frameheight: 145, startFrame: 0, endFrame: 12});
+        this.load.spritesheet('copwalk_left', './assets/cop_walk_left.png', {frameWidth: 90, frameheight: 145, startFrame: 0, endFrame: 12});
+        this.load.spritesheet('copwalk_right', './assets/cop_walk_right.png', {frameWidth: 90, frameheight: 145, startFrame: 0, endFrame: 12});
+
         this.load.image('border1', './assets/border.png');
         this.load.image('border2', './assets/border2.png');
         this.load.image('border3', './assets/border3.png');
@@ -94,6 +104,57 @@ class Play extends Phaser.Scene {
         keyDOWN = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
         keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
         keyTAB = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.TAB);
+
+        // animation config
+        this.anims.create({
+            key: 'walk_up',
+            frames: this.anims.generateFrameNumbers('playerwalk_up', { start: 0, end: 16, first: 0}),
+            frameRate: 30
+            });
+
+        this.anims.create({
+            key: 'walk_down',
+            frames: this.anims.generateFrameNumbers('playerwalk_down', { start: 0, end: 17, first: 0}),
+            frameRate: 30
+            });
+
+        this.anims.create({
+            key: 'walk_right',
+            frames: this.anims.generateFrameNumbers('playerwalk_right', { start: 0, end: 12, first: 0}),
+            frameRate: 30
+            });
+
+        this.anims.create({
+            key: 'walk_left',
+            frames: this.anims.generateFrameNumbers('playerwalk_left', { start: 0, end: 12, first: 0}),
+            frameRate: 30
+            });
+
+
+
+        this.anims.create({
+            key: 'copwalk_up',
+            frames: this.anims.generateFrameNumbers('copwalk_up', { start: 0, end: 16, first: 0}),
+            frameRate: 30
+            });
+    
+        this.anims.create({
+            key: 'copwalk_down',
+            frames: this.anims.generateFrameNumbers('copwalk_down', { start: 0, end: 12, first: 0}),
+            frameRate: 30
+            });
+    
+        this.anims.create({
+            key: 'copwalk_right',
+            frames: this.anims.generateFrameNumbers('copwalk_right', { start: 0, end: 12, first: 0}),
+            frameRate: 30
+            });
+    
+        this.anims.create({
+            key: 'copwalk_left',
+            frames: this.anims.generateFrameNumbers('copwalk_left', { start: 0, end: 12, first: 0}),
+            frameRate: 30
+            });
     }
 
     update() {
