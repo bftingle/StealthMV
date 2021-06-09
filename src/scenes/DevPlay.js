@@ -15,6 +15,7 @@ class DevPlay extends Phaser.Scene {
         this.load.audio('detected', './assets/detected.wav');
         this.load.audio('pickup', './assets/pickup.wav');
 
+        this.load.image('final_hole', './assets/final_hole.png');
         this.load.image('border1', './assets/border.png');
         this.load.image('border2', './assets/border2.png');
         this.load.image('border3', './assets/border3.png');

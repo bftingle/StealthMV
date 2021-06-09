@@ -25,6 +25,7 @@ class Play extends Phaser.Scene {
         this.load.spritesheet('copwalk_left', './assets/cop_walk_left.png', {frameWidth: 90, frameheight: 145, startFrame: 0, endFrame: 12});
         this.load.spritesheet('copwalk_right', './assets/cop_walk_right.png', {frameWidth: 90, frameheight: 145, startFrame: 0, endFrame: 12});
 
+        this.load.image('final_hole', './assets/final_hole.png');
         this.load.image('border1', './assets/border.png');
         this.load.image('border2', './assets/border2.png');
         this.load.image('border3', './assets/border3.png');

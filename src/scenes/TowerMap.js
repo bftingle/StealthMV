@@ -3,7 +3,7 @@ class TowerMap {
         this.array = [
             [this.default, this.default, this.default, this.default, this.default],
             [this.default, this.default, this.default, this.default, this.default],
-            [this.default, this.default, this.start  , this.room2, this.default],
+            [this.default, this.default, this.start  , this.room2, this.finish],
             [this.default, this.default, this.room2, this.default, this.default],
             [this.default, this.default, this.default, this.default, this.default]
         ]
@@ -143,6 +143,21 @@ class TowerMap {
         new Crystal(scene, 1050, 700, 'stone2', 0, '1_4');
         new Crystal(scene, 1300, 200, 'stone2', 0, '1_4');
         new Lasers(scene, 1050, 760, 'lasers', 0);
+    }
+
+    finish(scene) {
+        scene.wallArray.push(new Wall(scene, 0, 0, 430, 30, 'wall1', 0));    //Outer Walls
+        scene.wallArray.push(new Wall(scene, 430, 0, 860, 30, 'wall1', 0));
+        scene.wallArray.push(new Wall(scene, 970, 0, 1400, 30, 'wall1', 0));
+        scene.wallArray.push(new Wall(scene, 0, 834, 430, 864, 'wall1', 0));    
+        scene.wallArray.push(new Wall(scene, 430, 834, 860, 864, 'wall1', 0));
+        scene.wallArray.push(new Wall(scene, 970, 834, 1400, 864, 'wall1', 0));
+        scene.wallArray.push(new Wall(scene, 0, 0, 30, 420, 'wall1_vert', 0));    
+        scene.wallArray.push(new Wall(scene, 0, 444, 30, 864, 'wall1_vert', 0));
+        scene.wallArray.push(new Wall(scene, 1370, 0, 1400, 420, 'wall1_vert', 0));    
+        scene.wallArray.push(new Wall(scene, 1370, 444, 1400, 864, 'wall1_vert', 0));
+        
+        scene.wallArray.push(new Wall(scene, 600, 332, 800, 532, 'final_hole', 0));
     }
 
 }
