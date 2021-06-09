@@ -3,8 +3,8 @@ class TowerMap {
         this.array = [
             [this.default, this.default, this.default, this.default, this.default],
             [this.default, this.default, this.default, this.default, this.default],
-            [this.default, this.default, this.start  , this.default, this.default],
-            [this.default, this.default, this.default, this.default, this.default],
+            [this.default, this.default, this.start  , this.room2, this.default],
+            [this.default, this.default, this.room2, this.default, this.default],
             [this.default, this.default, this.default, this.default, this.default]
         ]
     }
@@ -109,6 +109,40 @@ class TowerMap {
         //scene.wallArray.push(new Wall(scene, 550, 500, 600, 800, 'wall2_vert', 0));
         
         new Keycard(scene, 780, 550, 'greencard', 0, 'green');
+    }
+
+    room2(scene) {
+        scene.wallArray.push(new Wall(scene, 0, 0, 430, 30, 'wall1', 0));    //Outer Walls
+        scene.wallArray.push(new Wall(scene, 430, 0, 860, 30, 'wall1', 0));
+        scene.wallArray.push(new Wall(scene, 970, 0, 1400, 30, 'wall1', 0));
+        scene.wallArray.push(new Wall(scene, 0, 834, 430, 864, 'wall1', 0));    
+        scene.wallArray.push(new Wall(scene, 430, 834, 860, 864, 'wall1', 0));
+        scene.wallArray.push(new Wall(scene, 970, 834, 1400, 864, 'wall1', 0));
+        scene.wallArray.push(new Wall(scene, 0, 0, 30, 420, 'wall1_vert', 0));    
+        scene.wallArray.push(new Wall(scene, 0, 444, 30, 864, 'wall1_vert', 0));
+        scene.wallArray.push(new Wall(scene, 1370, 0, 1400, 420, 'wall1_vert', 0));    
+        scene.wallArray.push(new Wall(scene, 1370, 444, 1400, 864, 'wall1_vert', 0));
+
+        scene.wallArray.push(new Wall(scene, 60, 60, 90, 500, 'border_vert', 0)); 
+        scene.wallArray.push(new Wall(scene, 500, 200, 530, 750, 'border_vert2', 0)); 
+        scene.wallArray.push(new Wall(scene, 60, 500, 500, 530, 'border2', 0)); 
+        scene.wallArray.push(new Wall(scene, 60, 100, 600, 130, 'border2', 0)); 
+        scene.wallArray.push(new Wall(scene, 60, 200, 450, 230, 'border2', 0)); 
+
+        scene.wallArray.push(new Wall(scene, 700, 90, 1200, 400, 'wall_panel', 0)); 
+        scene.wallArray.push(new Wall(scene, 700, 500, 1000, 700, 'wall_panel3', 0)); 
+        scene.wallArray.push(new Wall(scene, 500, 750, 1000, 780, 'border2', 0));
+        scene.wallArray.push(new Wall(scene, 1100, 600, 1350, 800, 'wall_panel4', 0)); 
+        
+        new Crystal(scene, 120, 300, 'stone1', 0, '1_3');
+        scene.guardArray.push(new Guard(scene, 475, 500, 'guard', 0, [['up', 240], ['left', 100], ['down', 470], ['right', 400]]));
+        scene.guardArray.push(new Guard(scene, 500, 400, 'guard', 0, [['up', 570], ['left', 260], ['down', 700], ['right', 495]]));
+        scene.guardArray.push(new Guard(scene, 1300, 200, 'guard', 0, [['up', 85], ['left', 700], ['down', 450], ['right', 1300]]));
+        
+
+        new Crystal(scene, 1050, 700, 'stone2', 0, '1_4');
+        new Crystal(scene, 1300, 200, 'stone2', 0, '1_4');
+        new Lasers(scene, 1050, 760, 'lasers', 0);
     }
 
 }
