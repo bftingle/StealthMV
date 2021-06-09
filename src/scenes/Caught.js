@@ -10,7 +10,7 @@ class Caught extends Phaser.Scene {
     }
     
     create() {
-        console.log('hello');
+        //console.log('hello');
         this.game.sound.stopAll();
         this.add.sprite(700,430,'gameover');
         new Button(this, 200, 432, 'credits', 0, '', '36px', 'gotoCredits').setOrigin(0.5, 0.5).setInteractive({useHandCursor: true});
