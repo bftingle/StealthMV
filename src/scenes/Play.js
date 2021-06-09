@@ -30,6 +30,11 @@ class Play extends Phaser.Scene {
         this.load.image('player_left', './assets/player_left.png');
         this.load.image('player_right', './assets/player_right.png');
 
+        this.load.image('cop_up', './assets/cop_up.png');
+        this.load.image('cop_down', './assets/cop.png');
+        this.load.image('cop_left', './assets/cop_left.png');
+        this.load.image('cop_right', './assets/cop_right.png');
+
         this.load.image('final_hole', './assets/final_hole.png');
         this.load.image('border1', './assets/border.png');
         this.load.image('border2', './assets/border2.png');

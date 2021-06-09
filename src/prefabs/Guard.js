@@ -63,6 +63,9 @@ class Guard extends Phaser.GameObjects.Sprite {
                 }
                 this.y -= 1;
                 this.light.y = this.y - 18;
+                this.on('animationcomplete', () => {
+                    this.setTexture('cop_up', 0);
+                });
                 break;
             case 'left':
                 this.play('copwalk_left', true);
@@ -81,6 +84,9 @@ class Guard extends Phaser.GameObjects.Sprite {
                 }
                 this.x -= 1;
                 this.light.x = this.x - 18;
+                this.on('animationcomplete', () => {
+                    this.setTexture('cop_left', 0);
+                });
                 break;
             case 'down':
                 this.play('copwalk_down', true);
@@ -99,6 +105,9 @@ class Guard extends Phaser.GameObjects.Sprite {
                 }
                 this.y += 1;
                 this.light.y = this.y + 18;
+                this.on('animationcomplete', () => {
+                    this.setTexture('cop_down', 0);
+                });
                 break;
             case 'right':
                 this.play('copwalk_right', true);
@@ -117,6 +126,9 @@ class Guard extends Phaser.GameObjects.Sprite {
                 }
                 this.x += 1;
                 this.light.x = this.x + 18;
+                this.on('animationcomplete', () => {
+                    this.setTexture('cop_right', 0);
+                });
                 break;
         }
 
