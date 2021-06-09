@@ -40,6 +40,9 @@ class Play extends Phaser.Scene {
     }
     
     create(data) {
+        this.playMusic = this.sound.add('play_music',{volume:0.25,loop:true});
+        this.playMusic.play();
+
         this.testBackground = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'testBackground').setOrigin(0, 0);
 
         this.lightArray = [];
@@ -126,6 +129,7 @@ class Play extends Phaser.Scene {
             if(this.detection >= 15 && !this.gameOver) {
                 this.gameOver = true;
                 this.sound.play('detected');
+                this.playMusic.stop();
                 this.intervalArray.forEach(interval => clearInterval(interval));
                 this.time.delayedCall(2000, () => {this.scene.start('caughtScene');}, null, this);
             }

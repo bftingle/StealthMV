@@ -40,6 +40,9 @@ class DevPlay extends Phaser.Scene {
     }
     
     create(data) {
+        this.playMusic = this.sound.add('play_music',{volume:0.25,loop:true});
+        this.playMusic.play();
+
         this.testBackground = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'testBackground').setOrigin(0, 0);
 
         this.lightArray = [];
