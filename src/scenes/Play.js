@@ -15,15 +15,20 @@ class Play extends Phaser.Scene {
         this.load.audio('detected', './assets/detected.wav');
         this.load.audio('pickup', './assets/pickup.wav');
 
-        this.load.spritesheet('playerwalk_up', './assets/walk_up.png', {frameWidth: 90, frameheight: 50, startFrame: 0, endFrame: 16});
-        this.load.spritesheet('playerwalk_down', './assets/walk_down.png', {frameWidth: 90, frameheight: 145, startFrame: 0, endFrame: 17});
-        this.load.spritesheet('playerwalk_left', './assets/walk_left.png', {frameWidth: 90, frameheight: 145, startFrame: 0, endFrame: 12});
-        this.load.spritesheet('playerwalk_right', './assets/walk_right.png', {frameWidth: 90, frameheight: 145, startFrame: 0, endFrame: 12});
+        this.load.spritesheet('playerwalk_up', './assets/walk_up.png', {frameWidth: 90, frameHeight: 145, startFrame: 0, endFrame: 16});
+        this.load.spritesheet('playerwalk_down', './assets/walk_down.png', {frameWidth: 90, frameHeight: 145, startFrame: 0, endFrame: 17});
+        this.load.spritesheet('playerwalk_left', './assets/walk_left.png', {frameWidth: 90, frameHeight: 145, startFrame: 0, endFrame: 12});
+        this.load.spritesheet('playerwalk_right', './assets/walk_right.png', {frameWidth: 90, frameHeight: 145, startFrame: 0, endFrame: 12});
 
-        this.load.spritesheet('copwalk_up', './assets/cop_walk_up.png', {frameWidth: 90, frameheight: 145, startFrame: 0, endFrame: 16});
-        this.load.spritesheet('copwalk_down', './assets/cop_walk_down.png', {frameWidth: 90, frameheight: 145, startFrame: 0, endFrame: 12});
-        this.load.spritesheet('copwalk_left', './assets/cop_walk_left.png', {frameWidth: 90, frameheight: 145, startFrame: 0, endFrame: 12});
-        this.load.spritesheet('copwalk_right', './assets/cop_walk_right.png', {frameWidth: 90, frameheight: 145, startFrame: 0, endFrame: 12});
+        this.load.spritesheet('copwalk_up', './assets/cop_walk_up.png', {frameWidth: 90, frameHeight: 145, startFrame: 0, endFrame: 16});
+        this.load.spritesheet('copwalk_down', './assets/cop_walk_down.png', {frameWidth: 90, frameHeight: 145, startFrame: 0, endFrame: 12});
+        this.load.spritesheet('copwalk_left', './assets/cop_walk_left.png', {frameWidth: 90, frameHeight: 145, startFrame: 0, endFrame: 12});
+        this.load.spritesheet('copwalk_right', './assets/cop_walk_right.png', {frameWidth: 90, frameHeight: 145, startFrame: 0, endFrame: 12});
+
+        this.load.image('player_up', './assets/player_up.png');
+        this.load.image('player_down', './assets/player.png');
+        this.load.image('player_left', './assets/player_left.png');
+        this.load.image('player_right', './assets/player_right.png');
 
         this.load.image('final_hole', './assets/final_hole.png');
         this.load.image('border1', './assets/border.png');
@@ -114,13 +119,13 @@ class Play extends Phaser.Scene {
         this.anims.create({
             key: 'walk_up',
             frames: this.anims.generateFrameNumbers('playerwalk_up', { start: 0, end: 16, first: 0}),
-            frameRate: 30
+            frameRate: 45
             });
 
         this.anims.create({
             key: 'walk_down',
             frames: this.anims.generateFrameNumbers('playerwalk_down', { start: 0, end: 17, first: 0}),
-            frameRate: 30
+            frameRate: 45
             });
 
         this.anims.create({
@@ -140,25 +145,25 @@ class Play extends Phaser.Scene {
         this.anims.create({
             key: 'copwalk_up',
             frames: this.anims.generateFrameNumbers('copwalk_up', { start: 0, end: 16, first: 0}),
-            frameRate: 30
+            frameRate: 20
             });
     
         this.anims.create({
             key: 'copwalk_down',
             frames: this.anims.generateFrameNumbers('copwalk_down', { start: 0, end: 12, first: 0}),
-            frameRate: 30
+            frameRate: 20
             });
     
         this.anims.create({
             key: 'copwalk_right',
             frames: this.anims.generateFrameNumbers('copwalk_right', { start: 0, end: 12, first: 0}),
-            frameRate: 30
+            frameRate: 20
             });
     
         this.anims.create({
             key: 'copwalk_left',
             frames: this.anims.generateFrameNumbers('copwalk_left', { start: 0, end: 12, first: 0}),
-            frameRate: 30
+            frameRate: 20
             });
     }
 

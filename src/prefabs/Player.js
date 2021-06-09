@@ -11,7 +11,7 @@ class Player extends Phaser.Physics.Matter.Sprite {
         // animation config
         this.anims.create({
             key: 'walk_up',
-            frames: this.anims.generateFrameNumbers('playerwalk_up', { start: 0, end: 16, first: 0}),
+            frames: this.anims.generateFrameNumbers('playerwalk_up', { start: 0, end: 16}),
             frameRate: 30
             });
 
@@ -38,35 +38,59 @@ class Player extends Phaser.Physics.Matter.Sprite {
         if(keyW.isDown || keyUP.isDown){
         this.y -= 1;
         this.play('walk_up', true);
+        this.on('animationcomplete', () => {
+            this.setTexture('player_up', 0);
+        });
         }
 
         if(keyA.isDown || keyLEFT.isDown) {
             if(keyS.isDown || keyDOWN.isDown){
                 this.play('walk_down', true);
+                this.on('animationcomplete', () => {
+                    this.setTexture('player_down', 0);
+                });
                 }
             else if(keyW.isDown || keyUP.isDown){
                 this.play('walk_up', true);
+                this.on('animationcomplete', () => {
+                    this.setTexture('player_up', 0);
+                });
             }
             else{
                 this.play('walk_left', true);
+                this.on('animationcomplete', () => {
+                    this.setTexture('player_left', 0);
+                });
             }
         this.x -= 1;
         }
 
         if(keyS.isDown || keyDOWN.isDown) {
         this.play('walk_down', true);
+        this.on('animationcomplete', () => {
+            this.setTexture('player_down', 0);
+        });
         this.y += 1;
         }
 
         if(keyD.isDown || keyRIGHT.isDown) {
             if(keyS.isDown || keyDOWN.isDown){
                 this.play('walk_down', true);
+                this.on('animationcomplete', () => {
+                    this.setTexture('player_down', 0);
+                });
                 }
             else if(keyW.isDown || keyUP.isDown){
                 this.play('walk_up', true);
+                this.on('animationcomplete', () => {
+                    this.setTexture('player_up', 0);
+                });
                 }
             else{
                 this.play('walk_right', true);
+                this.on('animationcomplete', () => {
+                    this.setTexture('player_right', 0);
+                });
             }
         this.x += 1;
         }
