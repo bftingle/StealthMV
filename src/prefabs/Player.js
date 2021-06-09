@@ -39,16 +39,35 @@ class Player extends Phaser.Physics.Matter.Sprite {
         this.y -= 1;
         this.play('walk_up', true);
         }
+
         if(keyA.isDown || keyLEFT.isDown) {
-        this.play('walk_left', true);
+            if(keyS.isDown || keyDOWN.isDown){
+                this.play('walk_down', true);
+                }
+            else if(keyW.isDown || keyUP.isDown){
+                this.play('walk_up', true);
+            }
+            else{
+                this.play('walk_left', true);
+            }
         this.x -= 1;
         }
+
         if(keyS.isDown || keyDOWN.isDown) {
         this.play('walk_down', true);
         this.y += 1;
         }
+
         if(keyD.isDown || keyRIGHT.isDown) {
-        this.play('walk_right', true);
+            if(keyS.isDown || keyDOWN.isDown){
+                this.play('walk_down', true);
+                }
+            else if(keyW.isDown || keyUP.isDown){
+                this.play('walk_up', true);
+                }
+            else{
+                this.play('walk_right', true);
+            }
         this.x += 1;
         }
     }
