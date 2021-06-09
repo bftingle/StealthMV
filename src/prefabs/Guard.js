@@ -15,9 +15,39 @@ class Guard extends Phaser.GameObjects.Sprite {
         scene.intervalArray.push(setInterval(() => {this.run.play()}, 500));
     }
 
+
+    preload() {
+        // animation config
+        this.anims.create({
+            key: 'copwalk_up',
+            frames: this.anims.generateFrameNumbers('copwalk_up', { start: 0, end: 16, first: 0}),
+            frameRate: 30
+            });
+
+        this.anims.create({
+            key: 'copwalk_down',
+            frames: this.anims.generateFrameNumbers('copwalk_down', { start: 0, end: 17, first: 0}),
+            frameRate: 30
+            });
+
+        this.anims.create({
+            key: 'copwalk_right',
+            frames: this.anims.generateFrameNumbers('copwalk_right', { start: 0, end: 12, first: 0}),
+            frameRate: 30
+            });
+
+        this.anims.create({
+            key: 'copwalk_left',
+            frames: this.anims.generateFrameNumbers('copwalk_left', { start: 0, end: 12, first: 0}),
+            frameRate: 30
+            });
+    }
+
+
     update() {
         switch(this.path[this.pathIndex][0]) {
             case 'up':
+                this.play('copwalk_up', true);
                 if(this.light.angle != 0) {
                     if(this.light.angle > 0)  this.light.angle -= 5;
                     else this.light.angle += 5;
@@ -35,6 +65,7 @@ class Guard extends Phaser.GameObjects.Sprite {
                 this.light.y = this.y - 18;
                 break;
             case 'left':
+                this.play('copwalk_left', true);
                 if(this.light.angle != -90) {
                     if(this.light.angle > -90 && this.light.angle < 90)  this.light.angle -= 5;
                     else this.light.angle += 5;
@@ -52,6 +83,7 @@ class Guard extends Phaser.GameObjects.Sprite {
                 this.light.x = this.x - 18;
                 break;
             case 'down':
+                this.play('copwalk_down', true);
                 if(this.light.angle != -180) {
                     if(this.light.angle < 0)  this.light.angle -= 5;
                     else this.light.angle += 5;
@@ -69,6 +101,7 @@ class Guard extends Phaser.GameObjects.Sprite {
                 this.light.y = this.y + 18;
                 break;
             case 'right':
+                this.play('copwalk_right', true);
                 if(this.light.angle != 90) {
                     if(this.light.angle > 90 || this.light.angle < -90)  this.light.angle -= 5;
                     else this.light.angle += 5;
